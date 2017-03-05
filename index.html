@@ -1,0 +1,247 @@
+<html><head>
+        <title>The Mindful Cottage</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="libs/jquery-2.1.0.min.js"></script>
+        <script type="text/javascript" src="libs/jquery.swipebox.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="index.css" rel="stylesheet" type="text/css">
+        <link href="libs/swipebox.min.css" rel="stylesheet" type="text/css">
+        <link href="libs/animate.min.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript">
+            ;( function( $ ) {
+                              		$( '.swipebox' ).swipebox();
+                               } )( jQuery );
+        </script>
+        <script type="text/javascript">
+            ;(function($) {
+                                            		$(document).ready(function() {
+                                                      $.fn.extend({
+                                                        animateCss: function (animationName) {
+                                                          var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+                                                          this.addClass('animated ' + animationName).one(animationEnd, function() {
+                                                            $(this).removeClass('animated ' + animationName);
+                                                          });
+                                                        }});
+                                            			$('#btn-send').click(function() {
+                        									if (!isEmail($("input[name=email]").val())) {
+                        										showResultMessage("The email address you have entered is not valid.<br>Plese enter a valid email address.", true, "OK")
+                        									} else {
+                        										$.ajax({
+                        											url: "http://example.com",
+                        											method: "POST",
+                        											data: {message: "hello!"},
+                        											dataType: "json",
+                        											success: function(json) {
+                        												showResultMessage("Thank you, your message has been sent.<br>We'll get back to you as soon as possible.")
+                        											},
+                        											error: function(xhr, textStatus, errorThrown) {
+                        												showResultMessage("Oops, something went wrong.<br>Please check your internet connection and try again.", true, "Try again")
+                        											},
+                        										});
+                        									 }
+                        								});
+                        									
+                                            			$('#btn-retry').click(function() {
+                                            				hideResultMessage();
+                                            			});
+                                                    });
+                                      })(jQuery);
+                                      
+                                      function isEmail(email) {
+                        				  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                        				  return regex.test(email);
+                        			  }
+                        			  
+                        			  function showResultMessage (text, showButton, buttonText) {
+                        				  $("#contact-form-result-message").attr("style", "margin-top: 4%; height: " + $("#contact-form").innerHeight() + "px;"); //this is clunky, todo: fix
+                                          $("#contact-form").attr("style", "display: none;");
+                                          $("#contact-form-result-message > p").html(text)
+                        				  $("#contact-form-result-message > p").animateCss("rubberBand");
+                        				  $("#contact-form-result-message > span > a#btn-retry").text(buttonText);
+                        				  if (showButton) {
+                        					  $("#contact-form-result-message > a#btn-retry").attr("style", "margin-top: 4%; float: right;")
+                        				  } else {
+                        					  $("#contact-form-result-message > a#btn-retry").attr("style", "display: none; margin-top: 4%; float: right;")
+                        				  }
+                        				  
+                        			  }
+                        			  
+                        			  function hideResultMessage () {
+                        				  $("#contact-form-result-message").attr("style", "display: none;"); //this is clunky, todo: fix
+                                          $("#contact-form").attr("style", "margin-top: 4%;");
+                        				  
+                        			  }
+        </script>
+    </head><body>
+        <div class="section">
+            <div class="background-image" style="background-image : url('static-images/outside-front-large.jpg')"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="jumbotron">
+                            <div class="section">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h1>The Mindful Cottage</h1>
+                                            <p>A lovely place to be in the south of france</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img src="static-images/kitchen-small.jpg" class="center-block img-responsive">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="static-images/pond-small.jpg" class="center-block img-responsive">
+                    </div>
+                    <div class="col-md-6">
+                        <h2>About</h2>
+                        <p>This beautiful 400 year old stone cottage in the quite hamlet of Les Grolleaux
+                            in St Astier de Duras is the perfect place to relax from the usual demands
+                            of our fast-paced living. While the house maintains the old features it
+                            has been renovated with all the modern conveniences to provide a home from
+                            home experience. It has three spacious bedrooms one of which is ensuite.
+                            Each room has a double bed and there are two single beds in one of the
+                            rooms. The house is set on its own grounds with about an acre of well tended
+                            land. There are lots of quite shaded areas under trees to sit or lie around
+                            in a hammock. The house is surrounded by a terrace which is the perfect
+                            way to enjoy your outdoor meals.</p>
+                        <p>For those of you who like to sit quietly and soak in the atmosphere there
+                            is a beautiful spacious meditation room overlooking a lily-pond. The house
+                            is situated about 7km from Plum Village the beautiful Zen Centre of Thich
+                            Nhat Hanh.</p>
+                        <p>There is a small swimming pool to cool you down during the lazy hot summer
+                            days. For the colder days there is under-floor heating and a wood burning
+                            stove creating a cosy atmosphere throughout.</p>
+                        <p>Wifi is available and there is ample parking.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="section" style="margin-top: -2% !important">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="text-center">Photos</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="text-center" style="margin-bottom: -2%;">Click to view larger.</p>
+                    <div class="col-md-3">
+                        <a href="static-images/window-large.jpg" class="swipebox"><img src="static-images/window-small.jpg" class="center-block img-responsive img-thumbnail"></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="static-images/living-room-large.jpg" class="swipebox"><img src="static-images/living-room-small.jpg" class="center-block img-responsive img-thumbnail"></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="static-images/meditation-space-large.jpg" class="swipebox" title="The meditation space"><img src="static-images/meditation-space-small.jpg" class="center-block img-responsive img-thumbnail"></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="static-images/kitchen-large.jpg" class="swipebox"><img src="static-images/kitchen-small.jpg" class="center-block img-responsive img-thumbnail" style="width=100%;"></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="static-images/swimming-pool-large.jpg" class="swipebox"><img src="static-images/swimming-pool-small.jpg" class="center-block img-responsive img-thumbnail"></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="static-images/main-bedroom-large.jpg" class="swipebox"><img src="static-images/main-bedroom-small.jpg" class="center-block img-responsive img-thumbnail"></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="static-images/bathroom-large.jpg" class="swipebox"><img src="static-images/bathroom-small.jpg" class="center-block img-responsive img-thumbnail"></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="static-images/second-bedroom-large.jpg" class="swipebox"><img src="static-images/second-bedroom-small.jpg" class="center-block img-responsive img-thumbnail"></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="static-images/small-bedroom-large.jpg" class="swipebox"><img src="static-images/small-bedroom-small.jpg" class="center-block img-responsive img-thumbnail"></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="static-images/kitchen-room-from-kitchen-large.jpg" class="swipebox"><img src="static-images/kitchen-room-from-kitchen-small.jpg" class="center-block img-responsive img-thumbnail"></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="static-images/outside-front-main-building-large.jpg" class="swipebox"><img src="static-images/outside-front-main-building-small.jpg" class="center-block img-responsive img-thumbnail"></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="static-images/kitchen-from-room-large.jpg" class="swipebox"><img src="static-images/kitchen-from-room-small.jpg" class="center-block img-responsive img-thumbnail"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="section" style="margin-top: -2% !important">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="section">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h1>Contact</h1>
+                                        <ul class="lead">
+                                            <li>Phone: 00353866001935</li>
+                                            <li>Email: something@gmail.com
+                                                <br>
+                                            </li>
+                                            <li>Or use the contact form here:</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="section">
+                            <div class="col-md-12">
+                                <form role="form">
+                                    <h3 class="">Send a message</h3>
+                                    <div style="margin-top: 4%;" id="contact-form" class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Your Name" name="name">
+                                            <input type="text" class="form-control" placeholder="Your email address" style="margin-top: 4%;" name="email">
+                                            <input name="_gotcha" id="gotcha" type="text">
+                                            <textarea name="message" cols="80" rows="10" style="margin-top: 4%;" class="form-control" placeholder="Your message"></textarea>
+                                        </div>
+                                        <span class="input-group-btn">
+                                            <a id="btn-send" class="btn btn-success" style="margin-top: 4%; float: right; " type="submit">Send</a>
+                                        </span>
+                                    </div>
+                                    <div id="contact-form-result-message" style="display: none;" class="form-group">
+                                        <p class="text-center">Oops, something went wrong.</p>
+                                        <span class="input-group-btn">
+                                            <a id="btn-retry" class="btn btn-success" style="margin-top: 4%; float: right;" type="submit">Try again</a>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="section">
+            <hr>
+            <div class="container">
+                <p style="margin-bottom: -20px;">Copyright&nbsp;© 2016. Made with love by
+                    <a href="http://jonascz.pw">Jonas Czech</a>, using
+                    <a href="http://pingendo.com/">Pingendo</a>&nbsp;&amp;
+                    <a href="https://getbootstrap.com/">Bootstrap</a>.</p>
+            </div>
+        </footer>
+    
+
+</body></html>
