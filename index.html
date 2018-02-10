@@ -1,243 +1,193 @@
+
+
 <html>
-
-<head>
-  <title>Linden Cottage</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.swipebox/1.4.4/js/jquery.swipebox.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href="index.css" rel="stylesheet" type="text/css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.swipebox/1.4.4/css/swipebox.min.css" rel="stylesheet" type="text/css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" type="text/css">
-  <script type="text/javascript">
-    ;( function( $ ) {
-                              		$( '.swipebox' ).swipebox();
-                               } )( jQuery );
-  </script>
-  <script type="text/javascript">
-    ;(function($) {
-                                            		$(document).ready(function() {
-                                                      $('span#email').text('ocallagha' + 'nmar4@hotmail.com'); //should stop the simple spambots..
-                                                      $.fn.extend({
-                                                        animateCss: function (animationName) {
-                                                          var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-                                                          this.addClass('animated ' + animationName).one(animationEnd, function() {
-                                                            $(this).removeClass('animated ' + animationName);
-                                                          });
-                                                        }});
-                                            			$('#btn-send').click(function() {
-                        									if (!isEmail($("input[name=email]").val())) {
-                        										showResultMessage("The email address you have entered is not valid.<br>Plese enter a valid email address.", true, "OK")
-                        									} else {
-                        										$.ajax({
-                        											url: "http://example.com",
-                        											method: "POST",
-                        											data: {message: "hello!"},
-                        											dataType: "json",
-                        											success: function(json) {
-                        												showResultMessage("Thank you, your message has been sent.<br>We'll get back to you as soon as possible.")
-                        											},
-                        											error: function(xhr, textStatus, errorThrown) {
-                        												showResultMessage("Oops, something went wrong.<br>Please check your internet connection and try again.", true, "Try again")
-                        											},
-                        										});
-                        									 }
-                        								});
-                        									
-                                            			$('#btn-retry').click(function() {
-                                            				hideResultMessage();
-                                            			});
-                                                    });
-                                      })(jQuery);
-                                      
-                                      function isEmail(email) {
-                        				  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-                        				  return regex.test(email);
-                        			  }
-                        			  
-                        			  function showResultMessage (text, showButton, buttonText) {
-                        				  $("#contact-form-result-message").attr("style", "margin-top: 4%; height: " + $("#contact-form").innerHeight() + "px;"); //this is clunky, todo: fix
-                                          $("#contact-form").attr("style", "display: none;");
-                                          $("#contact-form-result-message > p").html(text)
-                        				  $("#contact-form-result-message > p").animateCss("rubberBand");
-                        				  $("#contact-form-result-message > span > a#btn-retry").text(buttonText);
-                        				  if (showButton) {
-                        					  $("#contact-form-result-message > a#btn-retry").attr("style", "margin-top: 4%; float: right;")
-                        				  } else {
-                        					  $("#contact-form-result-message > a#btn-retry").attr("style", "display: none; margin-top: 4%; float: right;")
-                        				  }
-                        				  
-                        			  }
-                        			  
-                        			  function hideResultMessage () {
-                        				  $("#contact-form-result-message").attr("style", "display: none;"); //this is clunky, todo: fix
-                                          $("#contact-form").attr("style", "margin-top: 4%;");
-                        				  
-                        			  }
-  </script>
-</head>
-
-<body>
-  <div class="section">
-    <div class="background-image" style="background-image : linear-gradient(to bottom,  rgba(255,255,255,0) 80%,rgba(255,255,255,1) 100%), url('static-images/outside-front-large.jpg');"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="jumbotron">
-            <div class="section">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-6">
-                    <h1>Linden Cottage</h1>
-                    <p>A lovely place to be in the south of France</p>
-                  </div>
-                  <div class="col-md-6">
-                    <img src="static-images/outside-front-main-building-small.jpg" class="center-block img-responsive"> </div>
-                </div>
+  <head>
+     <title>Linden Cottage</title>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.swipebox/1.4.4/js/jquery.swipebox.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+     <link href="index.css" rel="stylesheet" type="text/css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.swipebox/1.4.4/css/swipebox.min.css" rel="stylesheet" type="text/css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" type="text/css">
+     <script type="text/javascript">
+        ;( function( $ ) {
+          $( '.swipebox' ).swipebox();
+        } )( jQuery );
+     </script>
+     <script type="text/javascript">
+        ;(function($) {
+          $(document).ready(function() {
+            $('span#email').text('ocallagha' + 'nmar4@hotmail.com'); //should hopefully stop the simple spambots..
+          });
+        })(jQuery);
+     </script>
+  </head>
+  <body>
+     <div class="section">
+        <div class="background-image" style="background-image : linear-gradient(to bottom,  rgba(255,255,255,0) 80%,rgba(255,255,255,1) 100%), url('static-images/outside-front-large.jpg');"></div>
+        <div class="container">
+           <div class="row">
+              <div class="col-md-12">
+                 <div class="jumbotron">
+                    <div class="section">
+                       <div class="container">
+                          <div class="row">
+                             <div class="col-md-6">
+                                <h1>Linden Cottage</h1>
+                                <p>A lovely place to be in the south of France</p>
+                             </div>
+                             <div class="col-md-6">
+                                <img src="static-images/outside-front-main-building-small.jpg" class="center-block img-responsive"> 
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
               </div>
-            </div>
-          </div>
+           </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <hr>
-  <div class="section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <img src="static-images/pond-small.jpg" class="center-block img-responsive"> </div>
-        <div class="col-md-6">
-          <h2>About</h2>
-          <p>This beautiful 400 year old stone cottage in the quite hamlet of Les Grolleaux in St Astier de Duras is the perfect place to relax from the usual demands of our fast-paced living. While the house maintains the old features it has been renovated
-            with all the modern conveniences to provide a home from home experience. It has three spacious bedrooms one of which is ensuite. Each room has a double bed and there are two single beds in one of the rooms. The house is set on its own grounds
-            with about an acre of well tended land. There are lots of quite shaded areas under trees to sit or lie around in a hammock. The house is surrounded by a terrace which is the perfect way to enjoy your outdoor meals. For those of you who like
-            to sit quietly and soak in the atmosphere there is a beautiful spacious meditation room overlooking a lily-pond. The house is situated about 7km from Plum Village the beautiful Zen Centre of Thich Nhat Hanh. It is perfect for a private or
-            small group retreat. There is a small swimming pool to cool you down during the lazy hot summer days and wood burning stove creating a cosy atmosphere for the cooler days.</p>
-          <p>There are lots of beautiful walking paths (randonnées) for the keen walker.</p>
-          <p>Wifi is available and there is ample parking.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="section" style="margin-top: -2% !important">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h2 class="text-center">Photos</h2>
-        </div>
-      </div>
-      <div class="row">
-        <p class="text-center" style="margin-bottom: -2%;">Click to view larger.</p>
-        <div class="col-md-3">
-          <a href="static-images/window-large.jpg" class="swipebox">
-            <img src="static-images/window-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
-        </div>
-        <div class="col-md-3">
-          <a href="static-images/living-room-large.jpg" class="swipebox">
-            <img src="static-images/living-room-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
-        </div>
-        <div class="col-md-3">
-          <a href="static-images/meditation-space-large.jpg" class="swipebox" title="The meditation space">
-            <img src="static-images/meditation-space-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
-        </div>
-        <div class="col-md-3">
-          <a href="static-images/kitchen-large.jpg" class="swipebox">
-            <img src="static-images/kitchen-small.jpg" class="center-block img-responsive img-thumbnail" style="width=100%;"> </a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          <a href="static-images/swimming-pool-large.jpg" class="swipebox">
-            <img src="static-images/swimming-pool-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
-        </div>
-        <div class="col-md-3">
-          <a href="static-images/main-bedroom-large.jpg" class="swipebox">
-            <img src="static-images/main-bedroom-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
-        </div>
-        <div class="col-md-3">
-          <a href="static-images/bathroom-large.jpg" class="swipebox">
-            <img src="static-images/bathroom-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
-        </div>
-        <div class="col-md-3">
-          <a href="static-images/second-bedroom-large.jpg" class="swipebox">
-            <img src="static-images/second-bedroom-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          <a href="static-images/small-bedroom-large.jpg" class="swipebox">
-            <img src="static-images/small-bedroom-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
-        </div>
-        <div class="col-md-3">
-          <a href="static-images/kitchen-room-from-kitchen-large.jpg" class="swipebox">
-            <img src="static-images/kitchen-room-from-kitchen-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
-        </div>
-        <div class="col-md-3">
-          <a href="static-images/outside-front-main-building-large.jpg" class="swipebox">
-            <img src="static-images/outside-front-main-building-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
-        </div>
-        <div class="col-md-3">
-          <a href="static-images/kitchen-from-room-large.jpg" class="swipebox">
-            <img src="static-images/kitchen-from-room-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <hr>
-  <div class="section" style="margin-top: -2% !important">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="section">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-6">
-                  <h2>Some useful information</h2>
-                  <ul class="lead">
-                    <li>Nearest airports: Bordeaux (100km) and Bergerac (30km)</li>
-                    <li>Nearest railway station: Ste Foy-La-Grande (18km), with regular service to/from Bordeaux and Bergerac.</li>
-                    <li>Markets and Restaurants: There are plenty of good local markets and restaurants; as well as in Ste Foy-La-Grande, other examples include the towns of Duras (8km) and Eymet (15km).</li>
-                    <li>Car Hire: As well as at the airports, cars can be hired locally.</li>
-                    <li>For walkers, there are excellent local randonnées with printed guides available.</li>
-                    <li>Horse riding and cycling: Horse riding facilities are available locally and bicycles can be rented in Duras.</li>
-                  </ul>
-                  <p class="lead">Further information can be supplied to you on request.</p>
-                </div>
+     </div>
+     <hr>
+     <div class="section">
+        <div class="container">
+           <div class="row">
+              <div class="col-md-6">
+                 <img src="static-images/pond-small.jpg" class="center-block img-responsive"> 
               </div>
-            </div>
-          </div>
-          <div class="section">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-6">
-                  <h2>Contact for booking &amp; information</h2>
-                  <ul class="lead">
-                    <li>Phone: +353 86 6001935</li>
-                    <li>Email: <span id="email"></span> </li>
-                  </ul>
-                </div>
+              <div class="col-md-6">
+                 <h2>About</h2>
+                 <p>This beautiful 400 year old stone cottage in the quite hamlet of Les Grolleaux in St Astier de Duras is the perfect place to relax from the usual demands of our fast-paced living. While the house maintains the old features it has been renovated
+                    with all the modern conveniences to provide a home from home experience. It has three spacious bedrooms one of which is ensuite. Each room has a double bed and there are two single beds in one of the rooms. The house is set on its own grounds
+                    with about an acre of well tended land. There are lots of quite shaded areas under trees to sit or lie around in a hammock. The house is surrounded by a terrace which is the perfect way to enjoy your outdoor meals. For those of you who like
+                    to sit quietly and soak in the atmosphere there is a beautiful spacious meditation room overlooking a lily-pond. The house is situated about 7km from Plum Village the beautiful Zen Centre of Thich Nhat Hanh. It is perfect for a private or
+                    small group retreat. There is a small swimming pool to cool you down during the lazy hot summer days and wood burning stove creating a cosy atmosphere for the cooler days.
+                 </p>
+                 <p>There are lots of beautiful walking paths (randonnées) for the keen walker.</p>
+                 <p>Wifi is available and there is ample parking.</p>
               </div>
-            </div>
-          </div>
+           </div>
         </div>
-        <div class="col-md-6">
-          <div class="section"> </div>
+     </div>
+     <div class="section" style="margin-top: -2% !important">
+        <div class="container">
+           <div class="row">
+              <div class="col-md-12">
+                 <h2 class="text-center">Photos</h2>
+              </div>
+           </div>
+           <div class="row">
+              <p class="text-center" style="margin-bottom: -2%;">Click to view larger.</p>
+              <div class="col-md-3">
+                 <a href="static-images/window-large.jpg" class="swipebox">
+                 <img src="static-images/window-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
+              </div>
+              <div class="col-md-3">
+                 <a href="static-images/living-room-large.jpg" class="swipebox">
+                 <img src="static-images/living-room-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
+              </div>
+              <div class="col-md-3">
+                 <a href="static-images/meditation-space-large.jpg" class="swipebox" title="The meditation space">
+                 <img src="static-images/meditation-space-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
+              </div>
+              <div class="col-md-3">
+                 <a href="static-images/kitchen-large.jpg" class="swipebox">
+                 <img src="static-images/kitchen-small.jpg" class="center-block img-responsive img-thumbnail" style="width=100%;"> </a>
+              </div>
+           </div>
+           <div class="row">
+              <div class="col-md-3">
+                 <a href="static-images/swimming-pool-large.jpg" class="swipebox">
+                 <img src="static-images/swimming-pool-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
+              </div>
+              <div class="col-md-3">
+                 <a href="static-images/main-bedroom-large.jpg" class="swipebox">
+                 <img src="static-images/main-bedroom-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
+              </div>
+              <div class="col-md-3">
+                 <a href="static-images/bathroom-large.jpg" class="swipebox">
+                 <img src="static-images/bathroom-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
+              </div>
+              <div class="col-md-3">
+                 <a href="static-images/second-bedroom-large.jpg" class="swipebox">
+                 <img src="static-images/second-bedroom-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
+              </div>
+           </div>
+           <div class="row">
+              <div class="col-md-3">
+                 <a href="static-images/small-bedroom-large.jpg" class="swipebox">
+                 <img src="static-images/small-bedroom-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
+              </div>
+              <div class="col-md-3">
+                 <a href="static-images/kitchen-room-from-kitchen-large.jpg" class="swipebox">
+                 <img src="static-images/kitchen-room-from-kitchen-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
+              </div>
+              <div class="col-md-3">
+                 <a href="static-images/outside-front-main-building-large.jpg" class="swipebox">
+                 <img src="static-images/outside-front-main-building-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
+              </div>
+              <div class="col-md-3">
+                 <a href="static-images/kitchen-from-room-large.jpg" class="swipebox">
+                 <img src="static-images/kitchen-from-room-small.jpg" class="center-block img-responsive img-thumbnail"> </a>
+              </div>
+           </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <footer class="section">
-    <hr>
-    <div class="container">
-      <p style="margin-bottom: -20px;">Copyright&nbsp;© 2016. Made with love by
-        <a href="http://jonascz.pw">Jonas Czech</a>, using
-        <a href="http://pingendo.com/">Pingendo</a>&nbsp;&amp;
-        <a href="https://getbootstrap.com/">Bootstrap</a>.</p>
-    </div>
-  </footer>
-</body>
-
+     </div>
+     <hr>
+     <div class="section" style="margin-top: -2% !important">
+        <div class="container">
+           <div class="row">
+              <div class="col-md-6">
+                 <div class="section">
+                    <div class="container">
+                       <div class="row">
+                          <div class="col-md-6">
+                             <h2>Some useful information</h2>
+                             <ul class="lead">
+                                <li>Nearest airports: Bordeaux (100km) and Bergerac (30km)</li>
+                                <li>Nearest railway station: Ste Foy-La-Grande (18km), with regular service to/from Bordeaux and Bergerac.</li>
+                                <li>Markets and Restaurants: There are plenty of good local markets and restaurants; as well as in Ste Foy-La-Grande, other examples include the towns of Duras (8km) and Eymet (15km).</li>
+                                <li>Car Hire: As well as at the airports, cars can be hired locally.</li>
+                                <li>For walkers, there are excellent local randonnées with printed guides available.</li>
+                                <li>Horse riding and cycling: Horse riding facilities are available locally and bicycles can be rented in Duras.</li>
+                             </ul>
+                             <p class="lead">Further information can be supplied to you on request.</p>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="section">
+                    <div class="container">
+                       <div class="row">
+                          <div class="col-md-6">
+                             <h2>Contact for booking &amp; information</h2>
+                             <ul class="lead">
+                                <li>Phone: +353 86 6001935</li>
+                                <li>Email: <span id="email"></span> </li>
+                             </ul>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+              <div class="col-md-6">
+                 <div class="section"> </div>
+              </div>
+           </div>
+        </div>
+     </div>
+     <footer class="section">
+        <hr>
+        <div class="container">
+           <p style="margin-bottom: -20px;">Copyright&nbsp;© 2016. Made with love by
+              <a href="https://stackoverflow.com/users/4428462/jonascz?tab=profile">Jonas Czech</a>, using
+              <a href="http://pingendo.com/">Pingendo</a>&nbsp;&amp;
+              <a href="https://getbootstrap.com/">Bootstrap</a>.
+           </p>
+        </div>
+     </footer>
+  </body>
 </html>
+
