@@ -8,7 +8,17 @@
 
 .cover {
   min-height: 50% !important;
-  max-height: 50%;
+  max-height: 50% !important;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #ffffff !important;
+  background-color: #2d2d2d !important;
+}
+
+.cover-image {
+  filter: opacity(.5);
 }
 
 .col-md-3 {
@@ -316,7 +326,7 @@ monospace;
 @navbar-padding-vertical : ((@navbar-height - @line-height-computed) / 2);
 @navbar-collapse-max-height : 340px;
 @navbar-default-color : black;
-@navbar-default-bg : #f8f8f8;
+@navbar-default-bg : #5e5e5e;
 @navbar-default-border : darken(@navbar-default-bg, 6.5%);
 // Navbar links
 @navbar-default-link-color : contrast(@navbar-default-bg, @text-color, @text-inverse, 43%);
